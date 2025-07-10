@@ -2,27 +2,36 @@
 import React, { useState } from 'react';
 import { Heart, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   const navItems = [
-    { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
-    { label: 'Our Work', href: '#programs' },
-    { label: 'Donate', href: '#donate' },
-    { label: 'Volunteer', href: '#volunteer' },
-    { label: 'Stories', href: '#stories' },
-    { label: 'Gallery', href: '#gallery' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Home', href: '/' },
+    { label: 'About', href: '/about' },
+    { label: 'Our Work', href: '/programs' },
+    { label: 'Donate', href: '/donate' },
+    { label: 'Volunteer', href: '/volunteer' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Gallery', href: '/gallery' },
+    { label: 'Contact', href: '/contact' },
   ];
+
+  const isActiveRoute = (href: string) => {
+    if (href === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname === href;
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md shadow-sm z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2">
             <div className="bg-gradient-to-r from-emerald-500 to-teal-600 p-2 rounded-lg">
               <Heart className="h-6 w-6 text-white" />
             </div>
@@ -30,28 +39,32 @@ const Header = () => {
               <h1 className="text-xl font-bold text-gray-900">CauseForConnect</h1>
               <p className="text-xs text-gray-600 hidden sm:block">Empowering Communities</p>
             </div>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.label}
-                href={item.href}
-                className="text-gray-700 hover:text-emerald-600 transition-colors duration-200 font-medium"
+                to={item.href}
+                className={`transition-colors duration-200 font-medium ${
+                  isActiveRoute(item.href)
+                    ? 'text-emerald-600 border-b-2 border-emerald-600'
+                    : 'text-gray-700 hover:text-emerald-600'
+                }`}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
             <Button 
+              asChild
               className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white"
-              onClick={() => document.getElementById('donate')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Donate Now
+              <Link to="/donate">Donate Now</Link>
             </Button>
           </div>
 
@@ -73,23 +86,25 @@ const Header = () => {
           <div className="lg:hidden pb-4">
             <nav className="flex flex-col space-y-4">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.label}
-                  href={item.href}
-                  className="text-gray-700 hover:text-emerald-600 transition-colors duration-200 font-medium"
+                  to={item.href}
+                  className={`transition-colors duration-200 font-medium ${
+                    isActiveRoute(item.href)
+                      ? 'text-emerald-600'
+                      : 'text-gray-700 hover:text-emerald-600'
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
               <Button 
+                asChild
                 className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white mt-4"
-                onClick={() => {
-                  setIsMenuOpen(false);
-                  document.getElementById('donate')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={() => setIsMenuOpen(false)}
               >
-                Donate Now
+                <Link to="/donate">Donate Now</Link>
               </Button>
             </nav>
           </div>

@@ -1,19 +1,19 @@
 
 import React from 'react';
 import Header from '@/components/Header';
-import Hero from '@/components/Hero';
-import Newsletter from '@/components/Newsletter';
+import GalleryComponent from '@/components/Gallery';
 import Footer from '@/components/Footer';
 
-const Index = () => {
+const Gallery = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <Hero />
-      <Newsletter />
+      <div className="pt-20">
+        <GalleryComponent />
+      </div>
       <Footer />
     </div>
   );
 };
 
-export default Index;
+export default Gallery;

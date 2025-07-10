@@ -2,6 +2,7 @@
 import React from 'react';
 import { ArrowDown, Heart, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -61,33 +62,37 @@ const Hero = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-12 animate-fade-in">
             <Button 
+              asChild
               size="lg"
               className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-              onClick={() => document.getElementById('donate')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              <Heart className="mr-2 h-5 w-5" />
-              Make a Donation
+              <Link to="/donate">
+                <Heart className="mr-2 h-5 w-5" />
+                Make a Donation
+              </Link>
             </Button>
             
             <Button 
+              asChild
               variant="outline"
               size="lg"
               className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-              onClick={() => document.getElementById('volunteer')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              <Users className="mr-2 h-5 w-5" />
-              Become a Volunteer
+              <Link to="/volunteer">
+                <Users className="mr-2 h-5 w-5" />
+                Become a Volunteer
+              </Link>
             </Button>
           </div>
 
           {/* Scroll Indicator */}
           <div className="animate-bounce">
-            <button
-              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+            <Link
+              to="/about"
               className="text-gray-500 hover:text-emerald-600 transition-colors duration-200"
             >
               <ArrowDown className="h-6 w-6 mx-auto" />
-            </button>
+            </Link>
           </div>
         </div>
       </div>
