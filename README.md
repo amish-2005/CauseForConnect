@@ -4,7 +4,7 @@ CauseForConnect is a web-based platform built as part of our BCA Mini Project at
 
 ---
 
-## 🌍 Project Purpose
+## Project Purpose
 
 To create a centralized digital space for NGOs to:
 - Showcase their work
@@ -15,7 +15,7 @@ To create a centralized digital space for NGOs to:
 
 ---
 
-## 🎯 Goals & SDG Mapping
+## Goals & SDG Mapping
 
 This project contributes to the following UN Sustainable Development Goals (SDGs):
 - **SDG 3:** Good Health and Well-Being  
@@ -24,7 +24,7 @@ This project contributes to the following UN Sustainable Development Goals (SDGs
 
 ---
 
-## 🛠️ Features
+##  Features
 
 - Home page with mission highlights
 - About page with NGO story and values
@@ -37,7 +37,7 @@ This project contributes to the following UN Sustainable Development Goals (SDGs
 
 ---
 
-## 👥 Target Users
+## Target Users
 
 - NGOs and non-profits
 - Donors (individuals and organizations)
@@ -47,7 +47,7 @@ This project contributes to the following UN Sustainable Development Goals (SDGs
 
 ---
 
-## 💻 Tech Stack
+## Tech Stack
 
 - **Frontend:** React / Next.js
 - **Styling:** Tailwind CSS / Styled Components (depending on generated setup)
@@ -56,7 +56,7 @@ This project contributes to the following UN Sustainable Development Goals (SDGs
 
 ---
 
-## 🔧 How to Run the Project Locally
+## How to Run the Project Locally
 
 ```bash
 # Clone the repository
